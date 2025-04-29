@@ -1,11 +1,13 @@
 const app = require("./app");
 const connectDatabase = require("./db/Database");
-const serverless = require("serverless-http");
 
 require("dotenv").config({ path: "backend/config/.env" });
 
-// Connect to DB
+// Connect to Database
 connectDatabase();
 
-// Export for Vercel (no app.listen here!)
-module.exports.handler = serverless(app);
+// Start the server traditionally (with app.listen)
+const PORT = process.env.PORT || 8000;
+const server = app.listen(PORT, () => {
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
+});
