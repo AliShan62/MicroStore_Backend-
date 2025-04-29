@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-// Load env only once
 require("dotenv").config({ path: "backend/config/.env" });
 
 app.use(express.json());
